@@ -3,10 +3,10 @@ import { MdOutlineShoppingCart } from "react-icons/md";
 import Image from "next/image";
 export default function () {
   return (
-    <div className=" h-36 px-10  flex  items-center  bg-slate-100">
+    <div className=" h-36 px-10  flex  items-center  bg-slate-100 shadow-xl">
       <div className="flex lg:gap-10 gap-2">
         <Image
-          className="mt-4"
+          className="mt-4 cursor-pointer"
           src="https://res.cloudinary.com/dbpjskran/image/upload/v1729679001/samples/ecommerce/shoes.png"
           width="100"
           height="100"
