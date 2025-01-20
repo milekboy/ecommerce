@@ -9,7 +9,7 @@ const products = [
     imageUrl:
       "https://res.cloudinary.com/dbpjskran/image/upload/v1729679003/samples/food/spices.jpg",
     name: "NLT Life Application Study Bible (Black Genuine Leather)",
-    price: "₦20,000",
+    price: "20,000",
     available: true,
   },
   {
@@ -17,7 +17,7 @@ const products = [
     imageUrl:
       "https://res.cloudinary.com/dbpjskran/image/upload/v1729679009/samples/balloons.jpg",
     name: "ESV Study Bible (Hardcover)",
-    price: "₦15,000",
+    price: "15,000",
     available: true,
   },
   {
@@ -25,7 +25,7 @@ const products = [
     imageUrl:
       "https://res.cloudinary.com/dbpjskran/image/upload/v1729679009/samples/breakfast.jpg",
     name: "CSB Tony Evans Study Bible",
-    price: "₦18,000",
+    price: "18,000",
     available: false,
   },
   {
@@ -33,7 +33,7 @@ const products = [
     imageUrl:
       "https://res.cloudinary.com/dbpjskran/image/upload/v1729679007/samples/shoe.jpg",
     name: "KJV Large Print Study Bible",
-    price: "₦22,000",
+    price: "22,000",
     available: true,
   },
   {
@@ -41,7 +41,7 @@ const products = [
     imageUrl:
       "https://res.cloudinary.com/dbpjskran/image/upload/v1729679001/samples/food/pot-mussels.jpg",
     name: "NIV Quest Study Bible",
-    price: "₦19,000",
+    price: "19,000",
     available: true,
   },
 ];
@@ -107,7 +107,7 @@ export default function ProductDetails({ params }) {
               </span>
             </div>
             <button className="mt-6  bg-red-400  font-semibold text-white py-2 px-4 border  border-transparent rounded-xl w-full">
-              Add to Cart
+              Proceed to checkout
             </button>
           </div>
         </div>
