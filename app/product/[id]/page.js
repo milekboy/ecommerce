@@ -5,6 +5,7 @@ import Thanks from "@/components/Thanks";
 import { useCart } from "@/app/context/CartProvider";
 import { useState } from "react";
 import { use } from "react";
+
 import CartModal from "@/components/CartModal";
 import Image from "next/image";
 
@@ -16,6 +17,9 @@ const products = [
     name: "NLT Life Application Study Bible (Black Genuine Leather)",
     price: "20000",
     available: true,
+    size: ["sm", "md", "lg"],
+    color: ["Red", "Blue", "Green"],
+    style: ["Crested", "Plain"],
   },
   {
     id: 2,
@@ -40,6 +44,9 @@ const products = [
     name: "KJV Large Print Study Bible",
     price: "22000",
     available: true,
+    size: ["sm", "md", "lg"],
+    color: ["Red", "Green"],
+    style: ["Crested", "Plain"],
   },
   {
     id: 5,
@@ -55,7 +62,9 @@ export default function ProductDetails({ params }) {
   const { addToCart } = useCart();
   const unwrappedParams = use(params);
   const { id } = unwrappedParams;
-
+  const [selectedSize, setSelectedSize] = useState("");
+  const [selectedColor, setSelectedColor] = useState("");
+  const [selectedStyle, setSelectedStyle] = useState("");
   const [thanks, setThanks] = useState(true);
   const [amount, setAmount] = useState(1);
   const [cartOpen, setCartOpen] = useState(false);
@@ -65,12 +74,20 @@ export default function ProductDetails({ params }) {
   if (!product) return <p>Product not found</p>;
 
   const handleAddToCart = () => {
+    if (!selectedSize || !selectedColor || !selectedStyle) {
+      alert(
+        "Please select all options (size, color, and style) before adding to cart."
+      );
+    }
     for (let i = 0; i < amount; i++) {
       addToCart({
         id: product.id,
         name: product.name,
         price: product.price,
         imageUrl: product.imageUrl,
+        size: selectedSize,
+        color: selectedColor,
+        style: selectedStyle,
       });
     }
   };
@@ -97,8 +114,58 @@ export default function ProductDetails({ params }) {
               className="mt-4 rounded-xl"
             />
           </div>
-          <div>
+          <div className="lg:w-80">
             <h1 className="text-2xl font-bold text-gray-700">{product.name}</h1>
+            <div className="mt-4 space-y-2">
+              {product.size && (
+                <select
+                  value={selectedSize}
+                  onChange={(e) => setSelectedSize(e.target.value)}
+                  className="w-full p-2 border rounded-lg"
+                >
+                  <option value="" hidden>
+                    Size
+                  </option>
+                  {product.size.map((size) => (
+                    <option key={size} value={size}>
+                      {size}
+                    </option>
+                  ))}
+                </select>
+              )}
+              {product.size && (
+                <select
+                  value={selectedColor}
+                  onChange={(e) => setSelectedColor(e.target.value)}
+                  className="w-full p-2 border rounded-lg"
+                >
+                  <option value="" hidden>
+                    Colour
+                  </option>
+                  {product.color.map((color) => (
+                    <option key={color} value={color}>
+                      {color}
+                    </option>
+                  ))}
+                </select>
+              )}
+              {product.style && (
+                <select
+                  value={selectedStyle}
+                  onChange={(e) => setSelectedStyle(e.target.value)}
+                  className="w-full p-2 border rounded-lg"
+                >
+                  <option value="" hidden>
+                    Style
+                  </option>
+                  {product.style.map((style) => (
+                    <option key={style} value={style}>
+                      {style}
+                    </option>
+                  ))}
+                </select>
+              )}
+            </div>
             <p className="mt-4 font-bold text-xl text-gray-700">
               ₦{Number(product.price).toLocaleString()}
             </p>
