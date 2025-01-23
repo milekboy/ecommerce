@@ -156,7 +156,7 @@ export default function ContactForm() {
             placeholder="Enter your address"
           />
         </div>
-        <div className="flex w-full gap-4">
+        <div className="lg:flex w-full gap-4">
           <div>
             <h6 className="block text-sm font-medium text-gray-700">Country</h6>
             <div className="border rounded-lg">
