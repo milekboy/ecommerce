@@ -3,6 +3,7 @@ import { useState } from "react";
 import { IoClose } from "react-icons/io5";
 import { useCart } from "@/app/context/CartProvider";
 import ContactForm from "./ContactForm";
+import PickupLocation from "./PickupLocation";
 
 export default function CartModal(props) {
   const { cartItems, removeFromCart } = useCart();
@@ -113,7 +114,25 @@ export default function CartModal(props) {
           <div>
             <h2 className="text-xl font-bold mb-4">Shipping Address</h2>
             <ContactForm />
-            <h2 className="text-xl font-bold mb-4">Order Summary</h2>
+            <div>
+              <h2 className="text-xl font-bold mb-4">Pickup Location</h2>
+              <PickupLocation />
+            </div>
+            <div className="mt-4 space-y-1">
+              <h2 className="text-xl font-bold ">Coupon</h2>
+              <p>If you have a coupon code, you can add it here.</p>
+              <div className="relative flex  border-2 w-full px-4 py-1 bg-gray-50 rounded-md h-14">
+                <input
+                  placeholder="Enter coupon code"
+                  type="text"
+                  className="w-[95%] bg-gray-50 focus:outline-none"
+                />
+                <button className="px-4 py-2 text-sm font-medium text-white bg-red-400 rounded hover:bg-red-500 ">
+                  Apply
+                </button>
+              </div>
+            </div>
+            <h2 className="text-xl font-bold mb-4 mt-6">Order Summary</h2>
             <div className="bg-gray-300 rounded-lg px-4 py-4">
               <ul>
                 {cartItems.map((item, index) => (

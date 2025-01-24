@@ -8,6 +8,8 @@ import { use } from "react";
 
 import CartModal from "@/components/CartModal";
 import Image from "next/image";
+import ProductSpecs from "@/components/ProductSpecs";
+import { MdCategory } from "react-icons/md";
 
 const products = [
   {
@@ -20,6 +22,13 @@ const products = [
     size: ["sm", "md", "lg"],
     color: ["Red", "Blue", "Green"],
     style: ["Crested", "Plain"],
+    productDetail: "This is a high-quality T-shirt made from 100% cotton.",
+    productSpecifications: {
+      Category: "Clothings",
+      Subcategory: "T-shirt",
+      Brand: "Tommy Hilfiger",
+      Color: "Blue",
+    },
   },
   {
     id: 2,
@@ -28,6 +37,13 @@ const products = [
     name: "ESV Study Bible (Hardcover)",
     price: "15000",
     available: true,
+    productDetail: "This is a high-quality T-shirt made from 100% cotton.",
+    productSpecifications: {
+      Category: "Clothings",
+      Subcategory: "T-shirt",
+      Brand: "Versace",
+      Color: "Blue",
+    },
   },
   {
     id: 3,
@@ -36,6 +52,13 @@ const products = [
     name: "CSB Tony Evans Study Bible",
     price: "18000",
     available: false,
+    productDetail: "This is a high-quality T-shirt made from 100% cotton.",
+    productSpecifications: {
+      Category: "Clothings",
+      Subcategory: "T-shirt",
+      Brand: "Xpetrum",
+      Color: "Blue",
+    },
   },
   {
     id: 4,
@@ -47,7 +70,15 @@ const products = [
     size: ["sm", "md", "lg"],
     color: ["Red", "Green"],
     style: ["Crested", "Plain"],
+    productDetail: "This is a high-quality T-shirt made from 100% cotton.",
+    productSpecifications: {
+      Category: "Clothings",
+      Subcategory: "T-shirt",
+      Brand: "Off-white",
+      Color: "Blue",
+    },
   },
+
   {
     id: 5,
     imageUrl:
@@ -55,6 +86,13 @@ const products = [
     name: "NIV Quest Study Bible",
     price: "19000",
     available: true,
+    productDetail: "This is a high-quality T-shirt made from 100% cotton.",
+    productSpecifications: {
+      Category: "Clothings",
+      Subcategory: "T-shirt",
+      Brand: "Gucci",
+      Color: "Blue",
+    },
   },
 ];
 
@@ -121,7 +159,7 @@ export default function ProductDetails({ params }) {
                 <select
                   value={selectedSize}
                   onChange={(e) => setSelectedSize(e.target.value)}
-                  className="w-full p-2 border rounded-lg"
+                  className="w-full p-2 border rounded-lg cursor-pointer"
                 >
                   <option value="" hidden>
                     Size
@@ -137,7 +175,7 @@ export default function ProductDetails({ params }) {
                 <select
                   value={selectedColor}
                   onChange={(e) => setSelectedColor(e.target.value)}
-                  className="w-full p-2 border rounded-lg"
+                  className="w-full p-2 border rounded-lg cursor-pointer"
                 >
                   <option value="" hidden>
                     Colour
@@ -153,7 +191,7 @@ export default function ProductDetails({ params }) {
                 <select
                   value={selectedStyle}
                   onChange={(e) => setSelectedStyle(e.target.value)}
-                  className="w-full p-2 border rounded-lg"
+                  className="w-full p-2 border rounded-lg cursor-pointer"
                 >
                   <option value="" hidden>
                     Style
@@ -205,6 +243,13 @@ export default function ProductDetails({ params }) {
             >
               {product.available ? "Add to Cart" : "Out of Stock"}
             </button>
+            <div className="mt-4">
+              {" "}
+              <ProductSpecs
+                details={product.productDetail}
+                specifications={product.productSpecifications}
+              />
+            </div>
           </div>
         </div>
       </div>
